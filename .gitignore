@@ -63,3 +63,5 @@ typings/
 \.idea/
 
 data/db/diagnostic\.data/
+
+data/db/journal/
