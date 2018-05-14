@@ -36,15 +36,16 @@ app.get('/userlist', function (req,res,next) {
     userCNT.userList(res);
 });
 
-app.get('/', function (req,res,next) {
+/*app.get('/', function (req,res,next) {
         res.send('BritishFanta🇬🇧');
-});
+});*/
 
 app.get('/route', function (req, res) {
 routing.routing(res,'./view/route.html');
 });
 
-
+//app.use(express.static(__dirname + '/view'));
+app.use(express.static(__dirname + '/view/'));
 
 let urlencodedParser = bodyParser.urlencoded({ extended: true });
 
