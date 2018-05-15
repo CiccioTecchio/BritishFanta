@@ -50,7 +50,7 @@ module.exports = {
     player,
     user,
     rosa
-}
+};
 
 /*module.exports = {
     user
