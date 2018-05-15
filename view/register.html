@@ -2,92 +2,96 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
-  <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Register - BritishFanta 🇬🇧</title>
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
-  <div class="container">
-    <h1 align="center"><span style="color:red">British</span><span style="color: blue">Fanta</span>🇬🇧</h1>
+<div class="container">
+    <h1 align="center"><span style="color:#ed5169">British</span><span style="color: #4776f4">Fanta</span>🇬🇧</h1>
     <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Register an Account</div>
-      <div class="card-body">
-        <form>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-6">
-                <label for="exampleInputName">First name</label>
-                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name" required>
-              </div>
-              <div class="col-md-6">
-                <label for="exampleInputLastName">Last name</label>
-                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name" required>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Nickname</label>
-            <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="Enter nickname" required>
-          </div>
-          <div class="form-group">
-            <div class="form-row">
-              <div class="col-md-12">
-                <label for="exampleInputPassword1">Password</label>
-                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" required>
-              </div>
+        <div class="card-header">Register an Account</div>
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputName">First name</label>
+                            <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp"
+                                   placeholder="Enter first name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputLastName">Last name</label>
+                            <input class="form-control" id="exampleInputLastName" type="text"
+                                   aria-describedby="nameHelp" placeholder="Enter last name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nickname</label>
+                    <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp"
+                           placeholder="Enter nickname" required>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input class="form-control" id="exampleInputPassword1" type="password"
+                                   placeholder="Password" required>
+                        </div>
 
+                    </div>
+                </div>
+                <a class="btn btn-primary btn-block" id="confirm">Register</a>
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="index.html">Login Page</a>
+                <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
             </div>
-          </div>
-          <a class="btn btn-primary btn-block" id="confirm">Register</a>
-        </form>
-        <div class="text-center">
-          <a class="d-block small mt-3" href="index.html">Login Page</a>
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
-  <script>
+<script>
     $("#confirm").click(function () {
-        let obj={name: $("#exampleInputName").val(), surname: $("#exampleInputLastName").val(), nick:$("#exampleInputEmail1").val(), pswd:$("#exampleInputPassword1").val()};
+        let obj = {
+            name: $("#exampleInputName").val(),
+            surname: $("#exampleInputLastName").val(),
+            nick: $("#exampleInputEmail1").val(),
+            pswd: $("#exampleInputPassword1").val()
+        };
         $.ajax({
             url: '/registrazione',
-            type:"POST",
+            type: "POST",
             dataType: 'json',
             data: JSON.stringify(obj),
             contentType: "application/json",
-            success: function(data) {
+            success: function (data) {
                 console.log(data);
             },
-            error: function(data){
+            error: function (data) {
                 alert("Compila bene i campi");
             }
         });
     });
 
-  </script>
-
+</script>
 
 </body>
-
-
-
-
 </html>

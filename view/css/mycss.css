@@ -1,0 +1,23 @@
+.ui-dialog-titlebar-close {
+     visibility: hidden;
+ }
+
+#dialog-confirm {
+    visibility: hidden;
+    display: none;
+}
+
+#leaderboard > tbody > tr:first-child > td,
+#leaderbord > tbody > tr:first-child > th {
+    background-color: mediumseagreen;
+}
+
+#leaderbord > tbody > tr:nth-child(2) > td,
+#leaderbord > tbody > tr:nth-child(2) > th {
+    background-color: darkorange;
+}
+
+#leaderbord > tbody > tr:nth-child(3) > td,
+#leaderbord > tbody > tr:nth-child(3) > th {
+    background-color: indianred;
+}
