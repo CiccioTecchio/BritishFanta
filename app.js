@@ -1,9 +1,13 @@
+const createError = require('http-errors');
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const bodyParser = require('body-parser');
 const playerCNT = require('./controller/playerCNT.js');
 const userCNT = require('./controller/userCNT.js');
-
+const fs = require('fs');
 let app = express();
 
 let dbUrl = "mongodb://localhost:27017/dbpl";
@@ -27,13 +31,10 @@ app.get('/userlist', function (req, res) {
 });
 
 app.post('/signin', function (req, res) {
-    let nick = req.body.nick;
-    let pswd = req.body.pswd;
-    userCNT.signIn(req, res, nick, pswd);
+    userCNT.signIn(req, res, req.body.nick, req.body.pswd);
 });
 
 app.post('/registrazione', function (req, res) {
-    console.log(req.body);
     userCNT.insertOne(res, req.body);
 });
 

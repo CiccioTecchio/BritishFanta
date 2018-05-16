@@ -14,6 +14,9 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- my import -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/mycss.css">
 </head>
 
 <body class="bg-dark">
@@ -61,12 +64,21 @@
         </div>
     </div>
 </div>
+<!--Modal form-->
+<div id="dialog-confirm" class="dialog" title="Registration failed">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Nickname already exists </p>
+</div>
+<div id="dialog-confirm2" class="dialog"title="Invalid field">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Compila tutti i campi </p>
+</div>
+<!--Modal form-->
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+<!-- my import -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
     $("#confirm").click(function () {
@@ -76,6 +88,21 @@
             nick: $("#exampleInputEmail1").val(),
             pswd: $("#exampleInputPassword1").val()
         };
+        if(obj.name=="" || obj.surname=="" || obj.nick=="" || obj.pswd==""){
+            $("#dialog-confirm2").css("visibility", "visible");
+            $("#dialog-confirm2").dialog({
+                resizable: false,
+                height: "auto",
+                width: 400,
+                modal: true,
+                buttons: {
+                    Cancel: function() {
+                        $( this ).dialog("close");
+                        $("#dialog-confirm2").css("visibility", "hidden");
+                    }
+                }
+            });
+        }else{
         $.ajax({
             url: '/registrazione',
             type: "POST",
@@ -83,13 +110,26 @@
             data: JSON.stringify(obj),
             contentType: "application/json",
             success: function (data) {
-                console.log(data);
+                $(window.location).attr('href', '/');
             },
             error: function (data) {
-                alert("Compila bene i campi");
+                $("#dialog-confirm").css("visibility", "visible");
+                $("#dialog-confirm").dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                        Cancel: function() {
+                            $( this ).dialog("close");
+                        }
+                    }
+                });
             }
         });
-    });
+        }
+        });
+
 
 </script>
 
