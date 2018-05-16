@@ -20,10 +20,7 @@
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
     <!-- my import -->
     <link href="css/mycss.css" rel="stylesheet">
@@ -33,18 +30,7 @@
 
         $(function () {
             if (localStorage.getItem("nick") == undefined) {
-                $("#dialog-confirm").css("visibility", "visible");
-                $("#dialog-confirm").dialog({
-                    resizable: false,
-                    height: "auto",
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                        "Back to login": function () {
-                            $(window.location).attr('href', '/index.html');
-                        }
-                    }
-                });
+                $(window.location).attr('href', '/error.html');
             }
         });
 
@@ -367,14 +353,6 @@
         </div>
     </div>
 </div>
-
-<!--Modal form-->
-<div id="dialog-confirm" class="dialog" title="Empty the recycle bin?">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>You are not authenticate
-        user. Go back to login</p>
-</div>
-<!--Modal form-->
-
 
 <!-- Core plugin JavaScript-->
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
