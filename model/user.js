@@ -28,6 +28,10 @@ let userSchema = new Schema({
     points: {
         type: Number,
         default: 0,
+    },
+    rooms: {
+        type: String,
+        default: null
     }
 });
 

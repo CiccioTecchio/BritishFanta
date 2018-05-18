@@ -63,7 +63,6 @@
     $("#login").click(function () {
 
         let obj = JSON.stringify({nick: $("#exampleInputEmail1").val(), pswd: $("#exampleInputPassword1").val()});
-        console.log("obj", obj);
 
         $.ajax({
             url: '/signin',
@@ -72,12 +71,12 @@
             dataType: 'json',
             contentType: "application/json",
             success: function (data) {
-
                 localStorage.setItem("nick", data.nick);
                 localStorage.setItem("budget", data.budget);
                 localStorage.setItem("name", data.name);
                 localStorage.setItem("surname", data.surname);
                 localStorage.setItem("points", data.points);
+                localStorage.setItem("rooms", data.rooms);
                 $(window.location).attr('href', '/home.html');
             }, error: function (data) {
                 $("#dialog-confirm").css("visibility", "visible");

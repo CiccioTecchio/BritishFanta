@@ -17,20 +17,33 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Bootstrap core JavaScript-->
+    <!-- my import -->
+    <link href="css/mycss.css" rel="stylesheet" type="text/css">
+
+
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!--Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!--Page level plugin JavaScript-->
 
-
-    <!-- my import -->
-    <link href="css/mycss.css" rel="stylesheet">
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!--Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!--Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
 
     <script>
-
 
         $(function () {
             if (localStorage.getItem("nick") == undefined) {
                 $(window.location).attr('href', '/error.html');
+            } else {
+                if (localStorage.getItem("rooms") != "null") {
+                    //todo aggiungere jquery ui per il messaggio di errore e la ridirezione alla home
+                    $(window.location).attr('href', '/home.html');
+                }
             }
         });
 
@@ -56,7 +69,6 @@
                     <span class="nav-link-text">Dashboard</span>
                 </a>
             </li>
-            <!-- multilevel menu-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
                    data-parent="#exampleAccordion">
@@ -65,15 +77,12 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti">
                     <li>
-                        <a href="create_room.html">Create Room</a>
+                        <a href="#">Create Room</a>
                     </li>
                     <li>
-                        <a href="#">Second Level Item</a>
+                        <a href="#">Info Room</a>
                     </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
+                    <!--<li>
                         <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
                             Level</a>
                         <ul class="sidenav-third-level collapse" id="collapseMulti2">
@@ -87,10 +96,9 @@
                                 <a href="#">Third Level Item</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </li>
-            <!--fine multilevel-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">
                     <i class="fa fa-fw fa-area-chart"></i>
@@ -139,7 +147,8 @@
                     </li>
                 </ul>
             </li>
-            <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
+            <!-- multilevel menu
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
                    data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-sitemap"></i>
@@ -288,253 +297,169 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <label style="color:#4776f4">Dashboard</label>
+                <label style="color:#4776f4">Create Room</label>
             </li>
-
+            <!--<li class="breadcrumb-item active">Blank Page</li>-->
         </ol>
-
         <div class="row">
-            <div class="col-lg-6">
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-info-circle"></i> Info Team
+            <div class="col-12">
+                <div class="container">
+
+                    <div class="card card-register mx-auto mt-5">
+                        <div class="card-header">Room informations</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="exampleInputName">Room name</label>
+                                            <input class="form-control" id="exampleInputName" type="text"
+                                                   aria-describedby="nameHelp"
+                                                   placeholder="room name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleInputLastName">Maximum number of invites</label>
+                                            <input class="form-control" id="exampleInputLastName" type="number" min="2"
+                                                   max="12">
+                                        </div>
+
+                                        <div class="col-md-12" style="padding-top:10px;">
+                                            <div class="card mb-3">
+                                                <div class="card-header">
+                                                    <i class="fa fa-table"></i> Table of users
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="userTable" width="100%"
+                                                               cellspacing="0"></table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="btn btn-primary btn-block" id="confirm">Send</a>
+                            </form>
+                        </div>
                     </div>
-                    <div class="list-group list-group-flush small">
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-                                <div class="media-body">
-                                    <i class="fa fa-money fa-5x" style="color: seagreen"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Budget</strong><br><span id="budget"></span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-
-                                <div class="media-body">
-                                    <i class="fa fa-bar-chart fa-5x" style="color: coral"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Position</strong></br><span id="position">3°</span>
-
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <i class="fa fa-soccer-ball-o fa-5x" style="color: gray"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Points</strong></br>
-                                    <span id="points"></span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <i class="fa fa-calendar fa-5x" style="color: #005cbf"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Next match</strong></br>
-                                    <span>Pluto</span>
-                                </div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-info-circle"></i> Info User
-                    </div>
-                    <div class="list-group list-group-flush small">
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-                                <div class="media-body">
-                                    <i class="fa fa-user-circle-o fa-5x" style="color: indianred"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Name</strong><br><span id="name"></span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-
-                                <div class="media-body">
-                                    <i class="fa fa-user-secret fa-5x" style="color: darkslateblue"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Nickname</strong></br><span id="nickname"></span>
-
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <i class="fa fa-flag fa-5x" style="color: #7b1b02"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Team name</strong></br>
-                                    <span>AC Apocchia</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action">
-                            <div class="media">
-
-                                <div class="media-body">
-                                    <i class="fa fa-group fa-5x" style="color: #005cbf"></i>
-                                </div>
-                                <div class="media-body">
-                                    <strong>Room name</strong></br>
-                                    <span id="room"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
                 </div>
             </div>
         </div>
-
-
     </div>
-
- <!-- todo spostare userTable in create_room.html, ogni room avrà la sua leaderboard
-    <div class="col-lg-5">
-    </div>
-
-    <div class="card mb-3">
-        <div class="card-header">
-            <i class="fa fa-table"></i> Leaderboard
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="leaderboard" width="100%" cellspacing="0"></table>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Your Website 2018</small>
             </div>
         </div>
-
-    </div>
-    <div class="card mb-3">
-        <div class="card-header">
-            <i class="fa fa-table"></i> Table of users
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="userTable" width="100%" cellspacing="0"></table>
-            </div>
-        </div>
-
-    </div>
-</div>-->
-<!-- /.container-fluid-->
-<!-- /.content-wrapper-->
-<footer class="sticky-footer">
-    <div class="container">
-        <div class="text-center">
-            <small>Copyright © Your Website 2018</small>
-        </div>
-    </div>
-</footer>
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fa fa-angle-up"></i>
-</a>
-<!-- Logout Modal-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" id="logout" href="index.html">Logout</a>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="index.html">Logout</a>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
+</body>
 
-<!-- Core plugin JavaScript-->
+
+<!-- Bootstrap core JavaScript
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ Core plugin JavaScript
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Page level plugin JavaScript-->
+Page level plugin JavaScript
 
 <script src="vendor/datatables/jquery.dataTables.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-<!-- Custom scripts for all pages-->
+ Custom scripts for all pages
 <script src="js/sb-admin.min.js"></script>
-<!-- Custom scripts for this page-->
+ Custom scripts for this page
 <script src="js/sb-admin-datatables.min.js"></script>
-
-<!-- my import -->
-
-</div>
-
+-->
 
 <script>
 
 
-    $("#nickname").html(localStorage.getItem("nick"));
-    $("#name").html(localStorage.getItem("name") + " " + localStorage.getItem("surname"));
-    $("#budget").html(localStorage.getItem("budget"));
-    $("#points").html(localStorage.getItem("points"));
-    //todo risolvere bug della stringa null
-    if(localStorage.getItem("rooms")=="null"){
-        $("#room").html("<a href='/create_room.html'>Create a room</a>");
-
-    }else{
-        $("#room").html(localStorage.getItem("rooms"));
-    }
-
-/* todo ogni room avrà la sua leaderboard
-    $('#leaderboard').DataTable({
-
-        pageLength: 8,
-        paging: false,
-        info: false,
+    let invited = [{nick: localStorage.getItem("nick")}];
+    let userTable = $('#userTable').DataTable({
+        pageLength: 5,
+        ajax: {
+            url: "/userlist",
+            type: 'POST',
+            data: {
+                "nick": localStorage.getItem("nick")
+            },
+            dataSrc: "",
+        },
+        bLengthChange: false,
+        bFilter: true,
+        bInfo: false,
         columns: [
-            {title: "Position"},
-            {title: "Team"},
-            {title: "Played"},
-            {title: "Won"},
-            {title: "Draw"},
-            {title: "Losed"},
-            {title: "GF"},
-            {title: "GA"},
-            {title: "GD"},
-            {title: "Points"},
+            {title: "Name", data: "name"},
+            {title: "Surname", data: "surname"},
+            {title: "Nickname", data: "nick"},
+            {title: "Invite", defaultContent: "<input type='button' class='btn btn-primary'value='Invite'>"},
         ]
     });
-*/
 
-    $("#logout").on("click", function () {
-        localStorage.clear();
+
+    $('#userTable tbody').on('click', 'input', function () {
+        let len = invited.length;
+        if (len <= $("#exampleInputLastName").val()) {
+            let data = userTable.row($(this).parents('tr')).data();
+            $(this).addClass('btn btn-success');
+            $(this).attr('disabled', 'disabled');
+            invited.push({nick: data.nick});
+        } else {
+            //todo da sostituire con jquery ui dialog
+            alert("Maximum number of invitations reached!");
+        }
     });
 
+    $("#confirm").on('click', function () {
+
+        let roomObj = {roomName: $("#exampleInputName").val(), participants: invited};
+
+        $.ajax({
+            url: '/createRoom',
+            type: "POST",
+            dataType: 'json',
+            data: JSON.stringify(roomObj),
+            contentType: "application/json",
+            success: function () {
+                alert("Room creata");
+            },
+            error: function (data) {
+                alert("Room exists");
+            }
+        });
+
+
+    });
+
+
 </script>
-
-
-</body>
 
 </html>

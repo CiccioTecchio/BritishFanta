@@ -14,13 +14,18 @@ function insertOne(res, obj) {
     });
 }
 
-function userList(res) {
-    user.find({}, {name: 1, surname: 1, nick: 1, budget: 1, points: 1, _id: 0}, function (err, doc) {
+
+
+function userList(res, nick) {
+    user.find({rooms: null, nick: {$ne: nick}}, {name: 1, surname: 1, nick: 1, budget: 1, points: 1, _id: 0}, function (err, doc) {
+
         if (err) {
-            console.log(d.toLocaleString() + '\tuserList() FAILURE');
+
+            console.log(d.toLocaleString() + '\tuserListPost() FAILURE');
             res.status(500).send('500').end();
         } else {
-            console.log(d.toLocaleString() + '\tuserList()');
+            console.log(d.toLocaleString() + '\tuserListPost()');
+
             res.status(200).json(doc).end();
         }
     });
@@ -28,7 +33,7 @@ function userList(res) {
 
 function signIn(req, res, nick, pswd) {
 
-    user.findOne({nick: nick, pswd: pswd}, {budget: 1, points: 1, name: 1, surname: 1, nick: 1}, function (err, doc) {
+    user.findOne({nick: nick, pswd: pswd}, {budget: 1, points: 1, name: 1, surname: 1, nick: 1,rooms:1}, function (err, doc) {
         if (err) {
             console.log(d.toLocaleString() + '\tsignIn() FAILURE');
             res.status(500).end();
@@ -50,5 +55,5 @@ function signIn(req, res, nick, pswd) {
 module.exports = {
     insertOne: insertOne,
     userList: userList,
-    signIn: signIn
+    signIn: signIn,
 };
