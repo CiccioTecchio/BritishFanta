@@ -41,8 +41,7 @@
                 $(window.location).attr('href', '/error.html');
             } else {
                 if (localStorage.getItem("rooms") != "null") {
-                    //todo aggiungere jquery ui per il messaggio di errore e la ridirezione alla home
-                    $(window.location).attr('href', '/home.html');
+                    $(window.location).attr('href', '/error2.html');
                 }
             }
         });
@@ -77,10 +76,10 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseMulti">
                     <li>
-                        <a href="#">Create Room</a>
+                        <a href="create_room.html">Create Room</a>
                     </li>
                     <li>
-                        <a href="#">Info Room</a>
+                        <a href="info_room.html">Leaderboard</a>
                     </li>
                     <!--<li>
                         <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
@@ -96,7 +95,7 @@
                                 <a href="#">Third Level Item</a>
                             </li>
                         </ul>
-                    </li>-->
+                    </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
@@ -110,22 +109,22 @@
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Tables</span>
                 </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Components</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseComponents">
-                    <li>
-                        <a href="navbar.html">Navbar</a>
+            </li>-->
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                           data-parent="#exampleAccordion">
+                            <i class="fa fa-flag"></i>
+                            <span class="nav-link-text">Team</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="create_team.html">Create Team</a>
+                            </li>
+                            <li>
+                                <a href="info_team.html">Info Team</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="cards.html">Cards</a>
-                    </li>
-                </ul>
-            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
                    data-parent="#exampleAccordion">

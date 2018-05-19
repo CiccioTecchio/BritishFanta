@@ -27,7 +27,6 @@ function createRoom(res, obj) {
             res.status(200).json({message: '200 OK'}).end();
         }
     });
-
 }
 
 module.exports = {
