@@ -4,8 +4,10 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const playerCNT = require('./controller/playerCNT.js');
 const userCNT = require('./controller/userCNT.js');
-const rosaCNT =require('./controller/rosaCNT.js')
-const roomCNT =require('./controller/roomCNT.js')
+const rosaCNT =require('./controller/rosaCNT.js');
+const roomCNT =require('./controller/roomCNT.js');
+const giornataCNT =require('./controller/giornataCNT.js');
+
 let app = express();
 
 let dbUrl = "mongodb://localhost:27017/dbpl";
@@ -45,11 +47,29 @@ app.get('/insertoneplayer', function (req,res) {
         nick: "vj",
         team: [{player:"j"},{player: "h"}]
     };
-    //res.send(obj).status(200).end();
     rosaCNT.insertOnePlayer(res,obj);
 });
 
 
+app.get('/testgiornata', function (req,res) {
+    let obj= {
+        num:1,
+        titolari: {
+            player: 'Salah',
+            team: 'Liverepool',
+            voto: 7,
+            GF: 3,
+            GS: 0
+        }
+    };
+
+    giornataCNT.testGiornata(res,obj);
+});
+
+
+app.post('/createteam',function(req,res){
+ rosaCNT.createteam(res,req.body);
+});
 
 let server = app.listen(8081, "127.0.0.1", function () {
     let address = server.address().address;

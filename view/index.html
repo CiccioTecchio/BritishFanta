@@ -77,6 +77,7 @@
                 localStorage.setItem("surname", data.surname);
                 localStorage.setItem("points", data.points);
                 localStorage.setItem("rooms", data.rooms);
+                localStorage.setItem("team", data.team);
                 $(window.location).attr('href', '/home.html');
             }, error: function (data) {
                 $("#dialog-confirm").css("visibility", "visible");

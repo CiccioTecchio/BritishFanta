@@ -17,7 +17,9 @@
     <!--my import -->
     <link href="css/mycss.css" rel="stylesheet">
 
+    <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
+    <!--<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -71,35 +73,8 @@
                     <li>
                         <a href="info_room.html">Leaderboard</a>
                     </li>
-                    <!--<li>
-                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
-                            Level</a>
-                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                    </li>-->
                 </ul>
             </li>
-            <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                 <a class="nav-link" href="charts.html">
-                     <i class="fa fa-fw fa-area-chart"></i>
-                     <span class="nav-link-text">Charts</span>
-                 </a>
-             </li>
-             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                 <a class="nav-link" href="tables.html">
-                     <i class="fa fa-fw fa-table"></i>
-                     <span class="nav-link-text">Tables</span>
-                 </a>
-             </li>-->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
                    data-parent="#exampleAccordion">
@@ -115,67 +90,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-file"></i>
-                    <span class="nav-link-text">Example Pages</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-                    <li>
-                        <a href="index.html">Login Page</a>
-                    </li>
-                    <li>
-                        <a href="register.html">Registration Page</a>
-                    </li>
-                    <li>
-                        <a href="forgot-password.html">Forgot Password Page</a>
-                    </li>
-                    <li>
-                        <a href="blank.html">Blank Page</a>
-                    </li>
-                </ul>
-            </li>
-            <!-- multilevel menu
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti"
-                   data-parent="#exampleAccordion">
-                    <i class="fa fa-fw fa-sitemap"></i>
-                    <span class="nav-link-text">Menu Levels</span>
-                </a>
-                <ul class="sidenav-second-level collapse" id="collapseMulti">
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Second Level Item</a>
-                    </li>
-                    <li>
-                        <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third
-                            Level</a>
-                        <ul class="sidenav-third-level collapse" id="collapseMulti2">
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                            <li>
-                                <a href="#">Third Level Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>-->
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-link"></i>
-                    <span class="nav-link-text">Link</span>
-                </a>
-            </li>
         </ul>
         <ul class="navbar-nav sidenav-toggler">
             <li class="nav-item">
@@ -185,95 +99,6 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <!--     <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-fw fa-envelope"></i>
-                    <span class="d-lg-none">Messages
-                      <span class="badge badge-pill badge-primary">12 New</span>
-                    </span>
-                    <span class="indicator text-primary d-none d-lg-block">
-                      <i class="fa fa-fw fa-circle"></i>
-                    </span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="messagesDropdown">
-                    <h6 class="dropdown-header">New Messages:</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <strong>David Miller</strong>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">Hey there! This new version of SB Admin is pretty awesome! These messages clip off when they reach the end of the box so they don't overflow over to the sides!</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <strong>Jane Smith</strong>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">I was wondering if you could meet for an appointment at 3:00 instead of 4:00. Thanks!</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <strong>John Doe</strong>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">I've sent the final files over to you for review. When you're able to sign off of them let me know and we can discuss distribution.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item small" href="#">View all messages</a>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-fw fa-bell"></i>
-                    <span class="d-lg-none">Alerts
-                      <span class="badge badge-pill badge-warning">6 New</span>
-                    </span>
-                    <span class="indicator text-warning d-none d-lg-block">
-                      <i class="fa fa-fw fa-circle"></i>
-                    </span>
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header">New Alerts:</h6>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <span class="text-success">
-                        <strong>
-                          <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
-                      </span>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <span class="text-danger">
-                        <strong>
-                          <i class="fa fa-long-arrow-down fa-fw"></i>Status Update</strong>
-                      </span>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <span class="text-success">
-                        <strong>
-                          <i class="fa fa-long-arrow-up fa-fw"></i>Status Update</strong>
-                      </span>
-                      <span class="small float-right text-muted">11:21 AM</span>
-                      <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item small" href="#">View all alerts</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <form class="form-inline my-2 my-lg-0 mr-lg-2">
-                    <div class="input-group">
-                      <input class="form-control" type="text" placeholder="Search for...">
-                      <span class="input-group-append">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fa fa-search"></i>
-                        </button>
-                      </span>
-                    </div>
-                  </form>
-                </li>-->
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
@@ -286,14 +111,118 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <label style="color:#4776f4">{page_name}</label>
+                <label style="color:#4776f4">Create Team</label>
             </li>
             <!--<li class="breadcrumb-item active">Blank Page</li>-->
         </ol>
         <div class="row">
-            <div class="col-12">
-                <h1>Blank</h1>
-                <p>This is an example of a blank page that you can use as a starting point for creating new ones.</p>
+            <div class="col-md-12">
+                <h1>Team composition</h1>
+                <p>A team is composed by: <b>3 Goalkeeper</b>, <b>8 Defenders</b>, <b>8
+                    Midfielders
+                </b>, <b>6
+                    Forwards</b>.</p>
+                <!--<p align="right">TTTTTTTT</p>-->
+            </div>
+            <div class="col-md-6">
+
+                <div class="col-md-11" >
+
+
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="form-row">
+
+                                    <div class="col-md-12" style="padding-top:10px;">
+                                        <div class="card mb-3">
+                                            <div class="card-header">
+                                                <i class="fa fa-table"></i> Player List
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered" id="playerList" width="100%"
+                                                           cellspacing="0"></table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-primary btn-block" id="confirm">Send</a>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-6" >
+
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-info-circle"></i> Team composition
+                    </div>
+                    <div class="list-group list-group-flush small">
+                        <a class="list-group-item list-group-item-action">
+                            <div class="media">
+                                <div class="media-body">
+                                    <i class="fa fa-money fa-5x" style="color: seagreen"></i>
+                                </div>
+                                <div class="media-body">
+                                    <strong>Budget</strong><br><span id="budget"></span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action">
+                            <div class="media">
+                                <div class="media-body">
+                                    <i class="fa fa-user-circle-o fa-5x" style="color: indianred"></i>
+                                </div>
+                                <div class="media-body">
+                                    <strong>Goalkeeper</strong><br><span id="gk"></span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action">
+                            <div class="media">
+
+
+                                <div class="media-body">
+                                    <i class="fa fa-user-secret fa-5x" style="color: darkslateblue"></i>
+                                </div>
+                                <div class="media-body">
+                                    <strong>Defenders</strong></br><span id="def"></span>
+
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action">
+                            <div class="media">
+
+                                <div class="media-body">
+                                    <i class="fa fa-flag fa-5x" style="color: #7b1b02"></i>
+                                </div>
+                                <div class="media-body">
+                                    <strong>Midfielders</strong></br>
+                                    <span id="mid"></span>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="list-group-item list-group-item-action">
+                            <div class="media">
+
+                                <div class="media-body">
+                                    <i class="fa fa-group fa-5x" style="color: #005cbf"></i>
+                                </div>
+                                <div class="media-body">
+                                    <strong>Forwards</strong></br>
+                                    <span id="fw"></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -331,5 +260,162 @@
     </div>
 </div>
 </body>
+
+
+<script src="vendor/datatables/jquery.dataTables.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+<!--Custom scripts for all pages-->
+<script src="js/sb-admin.min.js"></script>
+<!--Custom scripts for this page-->
+<script src="js/sb-admin-datatables.min.js"></script>
+
+
+<script>
+
+    $("#budget").html(localStorage.getItem("budget"));
+    let budget=localStorage.getItem("budget");
+    let gk = 0;
+    let def = 0;
+    let mid = 0;
+    let fw = 0;
+
+    let playerList = $('#playerList').DataTable({
+
+        ajax: {
+            url: "/playerlist",
+            type: 'GET',
+            dataSrc: "",
+        },
+        bLengthChange: false,
+        bFilter: true,
+        bInfo: false,
+        columns: [
+            {title: "Player", data: "Player"},
+            {title: "Team", data: "Team"},
+            {title: "Cost", data: "Cost"},
+            {title: "Roule", data: "Roule"},
+            //{title: "Invite", defaultContent: "<input type='button' class='btn btn-primary'value='Invite'>"},
+        ]
+    });
+
+    $('#playerList tbody').on('click', 'tr', function () {
+
+        let className = $(this).attr('class');
+
+        let rouleTxt = $(this).find('td')[3].innerText;
+        let playerName= $(this).find('td')[0].innerText;
+        let costPlayer= $(this).find('td')[2].innerText;
+        switch (rouleTxt) {
+            case 'GK':
+                if(className==='odd'|| className==='even'){
+                    if(gk>=3){alert("Numero massimo")}else{
+                    $(this).toggleClass('selected');
+                    gk++;
+                    budget-=costPlayer;
+                    $("#gk").html($("#gk").html()+""+playerName+", ");
+                    $("#budget").html(budget.toFixed(2));
+                    }
+                }else{
+                    gk--;
+                    budget=budget+parseFloat(costPlayer);
+                    $("#budget").html(budget.toFixed(2));
+                    $("#gk").html($("#gk").html().split(playerName+", ").join(""));
+                    $(this).removeClass('selected');
+
+                }
+                break;
+            case 'DEF':
+                if(className==='odd'|| className==='even'){
+                    if(def>=8){alert("Numero massimo")}else{
+                        $(this).toggleClass('selected');
+                        def++;
+                        budget-=costPlayer;
+                        $("#def").html($("#def").html()+""+playerName+", ");
+                        $("#budget").html(budget.toFixed(2));
+                    }
+                }else{
+                    def--;
+                    $("#def").html($("#def").html().split(playerName+", ").join(""));
+                    budget=budget+parseFloat(costPlayer);
+                    $("#budget").html(budget.toFixed(2));
+                    $(this).removeClass('selected');
+
+                }
+                break;
+            case 'MID':
+                if(className==='odd'|| className==='even'){
+                    if(mid>=8){alert("Numero massimo")}else{
+                        $(this).toggleClass('selected');
+                        mid++;
+                        budget-=costPlayer;
+                        $("#mid").html($("#mid").html()+""+playerName+", ");
+                        $("#budget").html(budget.toFixed(2));
+                    }
+                }else{
+                    mid--;
+                    $("#mid").html($("#mid").html().split(playerName+", ").join(""));
+                    budget=budget+parseFloat(costPlayer);
+                    $("#budget").html(budget.toFixed(2));
+                    $(this).removeClass('selected');
+
+                }
+                break;
+            case 'FOR':
+                if(className==='odd'|| className==='even'){
+                    if(fw>=6){alert("Numero massimo")}else{
+                        $(this).toggleClass('selected');
+                        fw++;
+                        budget-=costPlayer;
+                        $("#fw").html($("#fw").html()+""+playerName+", ");
+                        $("#budget").html(budget.toFixed(2));
+                    }
+                }else{
+                    fw--;
+                    $("#fw").html($("#fw").html().split(playerName+", ").join(""));
+                    budget=budget+parseFloat(costPlayer);
+                    $("#budget").html(budget.toFixed(2));
+                    $(this).removeClass('selected');
+
+                }
+                break;
+        }
+
+    });
+
+    $('#confirm').click(function () {
+        let rosa = new Array();
+        let len = playerList.rows('.selected').data().length;
+        if(budget>=0) {
+            if (gk == 3 && def == 8 && mid == 8 && fw == 6) {
+                localStorage.setItem("budget", budget);
+                for (let i = 0; i < len; i++) {
+                    rosa.push(playerList.rows('.selected').data()[i]);
+                }
+
+                let obj={
+                    nick: localStorage.getItem("nick"),
+                    budget: budget.toFixed(2),
+                    team: rosa
+                };
+
+                $.ajax({
+                    url:'/createteam',
+                    type: 'POST',
+                    data: JSON.stringify(obj),
+                    contentType: "application/json",
+                    dataType: 'json',
+                });
+
+
+                console.log(obj);
+
+
+            } else {
+                alert("Hai bisogno di 28 giocatori");
+            }
+        }else{alert("Conto negativo");}
+    });
+</script>
+
 
 </html>

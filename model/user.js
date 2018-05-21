@@ -23,15 +23,15 @@ let userSchema = new Schema({
     },
     budget: {
         type: Number,
-        default: 1000
+        default: 250
     }, // può essere 250, 500 o 1000
-    points: {
-        type: Number,
-        default: 0,
-    },
     rooms: {
         type: String,
         default: null
+    },
+    team: {
+        type: String,
+        unique:true
     }
 });
 

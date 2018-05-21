@@ -1,6 +1,6 @@
 .ui-dialog-titlebar-close {
-    visibility: hidden;
-}
+     visibility: hidden;
+ }
 
 .dialog {
     visibility: hidden;
@@ -20,4 +20,8 @@
 #leaderbord > tbody > tr:nth-child(3) > td,
 #leaderbord > tbody > tr:nth-child(3) > th {
     background-color: indianred;
+}
+
+.selected {
+    background: #acbad4;
 }

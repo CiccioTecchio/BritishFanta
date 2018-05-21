@@ -2,8 +2,6 @@ const rosa = require('../model/rosa.js');
 let d = new Date();
 
 function insertOnePlayer(res,obj) {
-
-
     let rosaO= new rosa(obj);
     rosaO.save(err => {
         if (err) {
@@ -16,6 +14,13 @@ function insertOnePlayer(res,obj) {
     });
 }
 
+function createteam(res,obj){
+    console.log(obj);
+    res.json(obj);
+
+}
+
 module.exports = {
-    insertOnePlayer: insertOnePlayer
+    insertOnePlayer: insertOnePlayer,
+    createteam: createteam
 };

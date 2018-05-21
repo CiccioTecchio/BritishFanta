@@ -373,7 +373,7 @@
                                 </div>
                                 <div class="media-body">
                                     <strong>Team name</strong></br>
-                                    <span>AC Apocchia</span>
+                                    <span id="team">AC Apocchia</span>
                                 </div>
                             </div>
                         </a>
@@ -451,6 +451,7 @@
     $("#name").html(localStorage.getItem("name") + " " + localStorage.getItem("surname"));
     $("#budget").html(localStorage.getItem("budget"));
     $("#points").html(localStorage.getItem("points"));
+    $("#team").html(localStorage.getItem("team"));
     //todo risolvere bug della stringa null
     if (localStorage.getItem("rooms") == "null") {
         $("#room").html("<a href='/create_room.html'>Create a room</a>");

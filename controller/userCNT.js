@@ -33,7 +33,7 @@ function userList(res, nick) {
 
 function signIn(req, res, nick, pswd) {
 
-    user.findOne({nick: nick, pswd: pswd}, {budget: 1, points: 1, name: 1, surname: 1, nick: 1,rooms:1}, function (err, doc) {
+    user.findOne({nick: nick, pswd: pswd}, {budget: 1, points: 1, name: 1, surname: 1, nick: 1, rooms:1, team:1}, function (err, doc) {
         if (err) {
             console.log(d.toLocaleString() + '\tsignIn() FAILURE');
             res.status(500).end();
@@ -44,8 +44,7 @@ function signIn(req, res, nick, pswd) {
                 res.status(404).end();
             } else {
                 console.log(d.toLocaleString() + '\tsignIn()');
-                res.json(doc);
-                res.status(200).end();
+                res.status(200).json(doc).end();
             }
         }
     });

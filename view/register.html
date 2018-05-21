@@ -41,9 +41,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Nickname</label>
-                    <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp"
-                           placeholder="Enter nickname" required>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="exampleInputEmail1">Nickname</label>
+                            <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp"
+                                   placeholder="Enter nickname" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Team name</label>
+                            <input class="form-control" id="teamName" type="text" placeholder="Enter Team Name" required>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <div class="form-row">
@@ -66,10 +74,12 @@
 </div>
 <!--Modal form-->
 <div id="dialog-confirm" class="dialog" title="Registration failed">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Nickname already exists </p>
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Nickname or Team already exists
+    </p>
 </div>
-<div id="dialog-confirm2" class="dialog"title="Invalid field">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Compila tutti i campi </p>
+<div id="dialog-confirm2" class="dialog" title="Invalid field">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>Compila tutti i campi
+    </p>
 </div>
 <!--Modal form-->
 <!-- Bootstrap core JavaScript-->
@@ -86,9 +96,10 @@
             name: $("#exampleInputName").val(),
             surname: $("#exampleInputLastName").val(),
             nick: $("#exampleInputEmail1").val(),
-            pswd: $("#exampleInputPassword1").val()
+            pswd: $("#exampleInputPassword1").val(),
+            team: $("#teamName").val()
         };
-        if(obj.name=="" || obj.surname=="" || obj.nick=="" || obj.pswd==""){
+        if (obj.name == "" || obj.surname == "" || obj.nick == "" || obj.pswd == "" || obj.team == "") {
             $("#dialog-confirm2").css("visibility", "visible");
             $("#dialog-confirm2").dialog({
                 resizable: false,
@@ -96,39 +107,39 @@
                 width: 400,
                 modal: true,
                 buttons: {
-                    Cancel: function() {
-                        $( this ).dialog("close");
+                    Cancel: function () {
+                        $(this).dialog("close");
                         $("#dialog-confirm2").css("visibility", "hidden");
                     }
                 }
             });
-        }else{
-        $.ajax({
-            url: '/registrazione',
-            type: "POST",
-            dataType: 'json',
-            data: JSON.stringify(obj),
-            contentType: "application/json",
-            success: function (data) {
-                $(window.location).attr('href', '/');
-            },
-            error: function (data) {
-                $("#dialog-confirm").css("visibility", "visible");
-                $("#dialog-confirm").dialog({
-                    resizable: false,
-                    height: "auto",
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                        Cancel: function() {
-                            $( this ).dialog("close");
+        } else {
+            $.ajax({
+                url: '/registrazione',
+                type: "POST",
+                dataType: 'json',
+                data: JSON.stringify(obj),
+                contentType: "application/json",
+                success: function (data) {
+                    $(window.location).attr('href', '/');
+                },
+                error: function (data) {
+                    $("#dialog-confirm").css("visibility", "visible");
+                    $("#dialog-confirm").dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                            Cancel: function () {
+                                $(this).dialog("close");
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
         }
-        });
+    });
 
 
 </script>
