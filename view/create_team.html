@@ -393,7 +393,7 @@
                 }
 
                 let obj={
-                    nick: localStorage.getItem("nick"),
+                    name: localStorage.getItem("team"),
                     budget: budget.toFixed(2),
                     team: rosa
                 };
@@ -404,6 +404,12 @@
                     data: JSON.stringify(obj),
                     contentType: "application/json",
                     dataType: 'json',
+                    success: function(){
+                        alert("Data send");
+                    },
+                    error: function () {
+                        alert("You already have a team");
+                    }
                 });
 
 

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let rosaSchema = new Schema({
-    nick: {type: Schema.Types.ObjectId, ref: "users"},
-    team: [{player: {type: Schema.Types.ObjectId, ref: "player"}}],
+    name: {type: String, unique: true},
+    team: [{player: String, titolare:{type:String, default: 0}}],
     points: {
       type: Number,
       default: 0,

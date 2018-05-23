@@ -68,7 +68,7 @@ app.get('/testgiornata', function (req,res) {
 
 
 app.post('/createteam',function(req,res){
- rosaCNT.createteam(res,req.body);
+ rosaCNT.createTeam(res,req.body);
 });
 
 let server = app.listen(8081, "127.0.0.1", function () {

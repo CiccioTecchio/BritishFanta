@@ -1,4 +1,5 @@
 const rosa = require('../model/rosa.js');
+const user = require('../model/user.js');
 let d = new Date();
 
 function insertOnePlayer(res,obj) {
@@ -14,13 +15,26 @@ function insertOnePlayer(res,obj) {
     });
 }
 
-function createteam(res,obj){
-    console.log(obj);
-    res.json(obj);
+function createTeam(res,obj){
+    let rosaO= new rosa(obj);
+    rosaO.save(err =>{
+        if(err){
+            console.log(d.toLocaleString() + '\tcreateTeam() Duplicate team');
+            res.status(409).json({message: 'Duplicate team', error: '409'}).end();
+        }else{
+
+            user.findOneAndUpdate({team: obj.name},{ budget: obj.budget}, function (err,data) {
+                console.log(data);
+            });
+            console.log(d.toLocaleString() + '\tcreateTeam()');
+
+            res.status(200).send('200').end();
+        }
+    });
 
 }
 
 module.exports = {
     insertOnePlayer: insertOnePlayer,
-    createteam: createteam
+    createTeam: createTeam
 };
