@@ -256,14 +256,15 @@ Page level plugin JavaScript
     $("#confirm").on('click', function () {
 
         let roomObj = {roomName: $("#exampleInputName").val(), participants: invited};
-
+        console.log(roomObj);
         $.ajax({
             url: '/createRoom',
             type: "POST",
             dataType: 'json',
             data: JSON.stringify(roomObj),
             contentType: "application/json",
-            success: function () {
+            success: function (data) {
+                localStorage.setItem('rooms',data.roomName);
                 alert("Room creata");
             },
             error: function (data) {

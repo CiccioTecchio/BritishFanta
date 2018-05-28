@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const playerCNT = require('./controller/playerCNT.js');
 const userCNT = require('./controller/userCNT.js');
 const rosaCNT =require('./controller/rosaCNT.js');
-const roomCNT =require('./controller/roomCNT.js');
 const giornataCNT =require('./controller/giornataCNT.js');
 
 let app = express();
@@ -39,7 +38,7 @@ app.post('/userlist',function (req,res) {
 });
 
 app.post('/createRoom',function (req,res) {
-    roomCNT.createRoom(res,req.body);
+    userCNT.createRoom(res,req.body);
 });
 
 app.get('/insertoneplayer', function (req,res) {
@@ -69,6 +68,22 @@ app.get('/testgiornata', function (req,res) {
 
 app.post('/createteam',function(req,res){
  rosaCNT.createTeam(res,req.body);
+});
+
+app.post('/getpointsbyteam',function(req,res){
+    rosaCNT.getPointsByTeam(res,req.body);
+});
+
+app.post('/getbudgetbynick', function (req,res) {
+   userCNT.getBudgetByNick(res,req.body);
+});
+
+app.post('/getRosa', function (req,res) {
+   rosaCNT.getRosa(res,req.body);
+});
+
+app.post('/formazione', function (req,res) {
+    rosaCNT.formazione(res, req.body);
 });
 
 let server = app.listen(8081, "127.0.0.1", function () {

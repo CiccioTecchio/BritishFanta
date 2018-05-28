@@ -31,7 +31,7 @@
 
 
     <script>
-
+        let nickL=localStorage.getItem("nick");
 
         $(function () {
             if (localStorage.getItem("nick") == undefined) {
@@ -122,11 +122,10 @@
                     Midfielders
                 </b>, <b>6
                     Forwards</b>.</p>
-                <!--<p align="right">TTTTTTTT</p>-->
             </div>
             <div class="col-md-6">
 
-                <div class="col-md-11" >
+                <div class="col-md-11">
 
 
                     <div class="card-body">
@@ -156,7 +155,7 @@
                 </div>
 
             </div>
-            <div class="col-lg-6" >
+            <div class="col-lg-6">
 
                 <div class="card mb-3">
                     <div class="card-header">
@@ -272,8 +271,10 @@
 
 <script>
 
+    //todo getBudgetByNick
+
     $("#budget").html(localStorage.getItem("budget"));
-    let budget=localStorage.getItem("budget");
+    let budget = localStorage.getItem("budget");
     let gk = 0;
     let def = 0;
     let mid = 0;
@@ -303,76 +304,84 @@
         let className = $(this).attr('class');
 
         let rouleTxt = $(this).find('td')[3].innerText;
-        let playerName= $(this).find('td')[0].innerText;
-        let costPlayer= $(this).find('td')[2].innerText;
+        let playerName = $(this).find('td')[0].innerText;
+        let costPlayer = $(this).find('td')[2].innerText;
         switch (rouleTxt) {
             case 'GK':
-                if(className==='odd'|| className==='even'){
-                    if(gk>=3){alert("Numero massimo")}else{
-                    $(this).toggleClass('selected');
-                    gk++;
-                    budget-=costPlayer;
-                    $("#gk").html($("#gk").html()+""+playerName+", ");
-                    $("#budget").html(budget.toFixed(2));
+                if (className === 'odd' || className === 'even') {
+                    if (gk >= 3) {
+                        alert("Numero massimo")
+                    } else {
+                        $(this).toggleClass('selected');
+                        gk++;
+                        budget -= costPlayer;
+                        $("#gk").html($("#gk").html() + "" + playerName + ", ");
+                        $("#budget").html(budget.toFixed(2));
                     }
-                }else{
+                } else {
                     gk--;
-                    budget=budget+parseFloat(costPlayer);
+                    budget = budget + parseFloat(costPlayer);
                     $("#budget").html(budget.toFixed(2));
-                    $("#gk").html($("#gk").html().split(playerName+", ").join(""));
+                    $("#gk").html($("#gk").html().split(playerName + ", ").join(""));
                     $(this).removeClass('selected');
 
                 }
                 break;
             case 'DEF':
-                if(className==='odd'|| className==='even'){
-                    if(def>=8){alert("Numero massimo")}else{
+                if (className === 'odd' || className === 'even') {
+                    if (def >= 8) {
+                        alert("Numero massimo")
+                    } else {
                         $(this).toggleClass('selected');
                         def++;
-                        budget-=costPlayer;
-                        $("#def").html($("#def").html()+""+playerName+", ");
+                        budget -= costPlayer;
+                        $("#def").html($("#def").html() + "" + playerName + ", ");
                         $("#budget").html(budget.toFixed(2));
                     }
-                }else{
+                } else {
                     def--;
-                    $("#def").html($("#def").html().split(playerName+", ").join(""));
-                    budget=budget+parseFloat(costPlayer);
+                    $("#def").html($("#def").html().split(playerName + ", ").join(""));
+                    budget = budget + parseFloat(costPlayer);
                     $("#budget").html(budget.toFixed(2));
                     $(this).removeClass('selected');
 
                 }
                 break;
             case 'MID':
-                if(className==='odd'|| className==='even'){
-                    if(mid>=8){alert("Numero massimo")}else{
+                if (className === 'odd' || className === 'even') {
+                    if (mid >= 8) {
+                        alert("Numero massimo")
+                    } else {
                         $(this).toggleClass('selected');
                         mid++;
-                        budget-=costPlayer;
-                        $("#mid").html($("#mid").html()+""+playerName+", ");
+                        budget -= costPlayer;
+                        $("#mid").html($("#mid").html() + "" + playerName + ", ");
                         $("#budget").html(budget.toFixed(2));
                     }
-                }else{
+                } else {
                     mid--;
-                    $("#mid").html($("#mid").html().split(playerName+", ").join(""));
-                    budget=budget+parseFloat(costPlayer);
+                    $("#mid").html($("#mid").html().split(playerName + ", ").join(""));
+                    budget = budget + parseFloat(costPlayer);
                     $("#budget").html(budget.toFixed(2));
                     $(this).removeClass('selected');
 
                 }
                 break;
             case 'FOR':
-                if(className==='odd'|| className==='even'){
-                    if(fw>=6){alert("Numero massimo")}else{
+                if (className === 'odd' || className === 'even') {
+                    if (fw >= 6) {
+                        alert("Numero massimo")
+                    } else {
                         $(this).toggleClass('selected');
                         fw++;
-                        budget-=costPlayer;
-                        $("#fw").html($("#fw").html()+""+playerName+", ");
+                        budget -= costPlayer;
+                        $("#fw").html($("#fw").html() + "" + playerName + ", ");
                         $("#budget").html(budget.toFixed(2));
                     }
-                }else{
+                } else {
                     fw--;
-                    $("#fw").html($("#fw").html().split(playerName+", ").join(""));
-                    budget=budget+parseFloat(costPlayer);
+                    $("#fw").html($("#fw").html().split(playerName + ", ").join(""));
+                    budget = budget + parseFloat(costPlayer);
                     $("#budget").html(budget.toFixed(2));
                     $(this).removeClass('selected');
 
@@ -385,26 +394,25 @@
     $('#confirm').click(function () {
         let rosa = new Array();
         let len = playerList.rows('.selected').data().length;
-        if(budget>=0) {
+        if (budget >= 0) {
             if (gk == 3 && def == 8 && mid == 8 && fw == 6) {
                 localStorage.setItem("budget", budget);
                 for (let i = 0; i < len; i++) {
                     rosa.push(playerList.rows('.selected').data()[i]);
                 }
 
-                let obj={
+                let obj = {
                     name: localStorage.getItem("team"),
                     budget: budget.toFixed(2),
                     team: rosa
                 };
-
                 $.ajax({
-                    url:'/createteam',
+                    url: '/createteam',
                     type: 'POST',
                     data: JSON.stringify(obj),
                     contentType: "application/json",
                     dataType: 'json',
-                    success: function(){
+                    success: function () {
                         alert("Data send");
                     },
                     error: function () {
@@ -419,7 +427,9 @@
             } else {
                 alert("Hai bisogno di 28 giocatori");
             }
-        }else{alert("Conto negativo");}
+        } else {
+            alert("Conto negativo");
+        }
     });
 </script>
 
