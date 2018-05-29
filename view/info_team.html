@@ -72,6 +72,9 @@
                     <li>
                         <a href="info_room.html">Leaderboard</a>
                     </li>
+                    <li>
+                        <a href="lastday.html">Last Day</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -117,7 +120,7 @@
                 <div class="col-md-11">
 
 
-                    <div class="card-body">roseList
+                    <div class="card-body">
                         <form>
                             <div class="form-group">
                                 <div class="form-row">
@@ -261,6 +264,11 @@
             dataTeam = data.team;
         }
     });
+
+
+
+
+
     let roseList = $('#roseList').DataTable({
         bLengthChange: false,
         bFilter: true,
@@ -270,7 +278,6 @@
             {title: "Player", "mData": "player"},
             {title: "PLTeam", "mData": "PLteam"},
             {title: "Roule", "mData": "roule"}
-            //{ title: "Starter","mData": "titolare" },
 
         ],
     });

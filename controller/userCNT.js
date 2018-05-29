@@ -34,7 +34,7 @@ function userList(res, nick) {
 
 function signIn(req, res, nick, pswd) {
 
-    user.findOne({nick: nick, pswd: pswd}, {budget: 1, points: 1, name: 1, surname: 1, nick: 1, rooms:1, team:1}, function (err, doc) {
+    user.findOne({nick: nick, pswd: pswd}, {budget: 1, name: 1, surname: 1, nick: 1, rooms:1, team:1}, function (err, doc) {
         if (err) {
             console.log(d.toLocaleString() + '\tsignIn() FAILURE');
             res.status(500).end();
@@ -47,6 +47,7 @@ function signIn(req, res, nick, pswd) {
                 /*room.findOne({roomName: doc.rooms}, function (err, data) {
                     console.log(data);
                 });*/
+                //todo ottenere anche punti e posizione
                 console.log(d.toLocaleString() + '\tsignIn()');
                 res.status(200).json(doc).end();
             }
@@ -67,30 +68,23 @@ function getBudgetByNick(res,obj){
 }
 
 function createRoom(res,obj){
-
-
-
 user.find({rooms:obj.roomName}, function (err,doc) {
     if(doc.length===0){
         let partecipants= obj.participants;
         let len= partecipants.length;
         for(let i=0;i<len;i++){
-            user.findOneAndUpdate({nick: partecipants[i].nick},{rooms:obj.roomName}, function (err,doc) {
+            user.findOneAndUpdate({nick: partecipants[i].nick},{rooms:obj.roomName},function (err,doc) {
+                console.log("update");
             });
         }
-        console.log(d.toLocaleString()+" createRoom()");
-res.status(200);
+        console.log(d.toLocaleString()+"\tcreateRoom()");
+        res.json({roomName:obj.roomName}).end();
     }else{
-        console.log(d.toLocaleString()+" createRoom() ROOM ALREDY EXSIST");
+        console.log(d.toLocaleString()+" createRoom() ROOM ALREADY EXSIST");
         res.json({roomName:obj.roomName}).status(409);
     }
 });
 
-/*for(let i=0;i<len;i++){
-    user.findOneAndUpdate({nick: partecipants[i].nick},{rooms:obj.roomName}, function (err,doc) {
-
-    });
-}*/
 }
 
 

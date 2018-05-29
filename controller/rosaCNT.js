@@ -2,7 +2,7 @@ const rosa = require('../model/rosa.js');
 const user = require('../model/user.js');
 let d = new Date();
 
-function insertOnePlayer(res, obj) {
+/*function insertOnePlayer(res, obj) {
     let rosaO = new rosa(obj);
     rosaO.save(err => {
         if (err) {
@@ -13,7 +13,7 @@ function insertOnePlayer(res, obj) {
             res.status(200).send('200').end();
         }
     });
-}
+}*/
 
 function createTeam(res, obj) {
     let teamObj = [];
@@ -89,7 +89,7 @@ function formazione(res, obj) {
 }
 
 module.exports = {
-    insertOnePlayer: insertOnePlayer,
+//    insertOnePlayer: insertOnePlayer,
     createTeam: createTeam,
     getPointsByTeam: getPointsByTeam,
     getRosa: getRosa,

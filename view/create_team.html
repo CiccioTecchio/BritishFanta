@@ -36,6 +36,10 @@
         $(function () {
             if (localStorage.getItem("nick") == undefined) {
                 $(window.location).attr('href', '/error.html');
+            }else{
+                if(localStorage.getItem("budget")<250){
+                    $(window.location).attr('href', '/error2.html');
+                }
             }
         });
 
@@ -72,6 +76,9 @@
                     </li>
                     <li>
                         <a href="info_room.html">Leaderboard</a>
+                    </li>
+                    <li>
+                        <a href="lastday.html">Last Day</a>
                     </li>
                 </ul>
             </li>
@@ -421,7 +428,7 @@
                 });
 
 
-                console.log(obj);
+                //console.log(obj);
 
 
             } else {

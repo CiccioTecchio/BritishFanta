@@ -70,6 +70,9 @@
                     <li>
                         <a href="info_room.html">Leaderboard</a>
                     </li>
+                    <li>
+                        <a href="lastday.html">Last Day</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -284,18 +287,18 @@
     $("#team").html(localStorage.getItem("team"));
 
     //todo aggiustare ajax lato server
-    $.ajax({
+   /* $.ajax({
         url: '/getpointsbyteam',
         type: 'POST',
         data: JSON.stringify({team: localStorage.getItem("team")}),
         contentType: "application/json",
         dataType: 'json',
         success: function (data) {
-            localStorage.setItem("points", data.points);
+            //localStorage.setItem("points", data.points);
             $("#position").html(data.positions);
             $("#points").html(data.points);
         }
-    });
+    });*/
 
 
     //todo risolvere bug della stringa null

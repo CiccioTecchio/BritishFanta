@@ -5,8 +5,7 @@ const bodyParser = require('body-parser');
 const playerCNT = require('./controller/playerCNT.js');
 const userCNT = require('./controller/userCNT.js');
 const rosaCNT =require('./controller/rosaCNT.js');
-const giornataCNT =require('./controller/giornataCNT.js');
-
+const giornataCNT =require('./controller/giornataCTN');
 let app = express();
 
 let dbUrl = "mongodb://localhost:27017/dbpl";
@@ -41,31 +40,6 @@ app.post('/createRoom',function (req,res) {
     userCNT.createRoom(res,req.body);
 });
 
-app.get('/insertoneplayer', function (req,res) {
-    let obj={
-        nick: "vj",
-        team: [{player:"j"},{player: "h"}]
-    };
-    rosaCNT.insertOnePlayer(res,obj);
-});
-
-
-app.get('/testgiornata', function (req,res) {
-    let obj= {
-        num:1,
-        titolari: {
-            player: 'Salah',
-            team: 'Liverepool',
-            voto: 7,
-            GF: 3,
-            GS: 0
-        }
-    };
-
-    giornataCNT.testGiornata(res,obj);
-});
-
-
 app.post('/createteam',function(req,res){
  rosaCNT.createTeam(res,req.body);
 });
@@ -85,6 +59,27 @@ app.post('/getRosa', function (req,res) {
 app.post('/formazione', function (req,res) {
     rosaCNT.formazione(res, req.body);
 });
+
+app.get('/getLastDay', function (req,res) {
+   giornataCNT.getLastDay(res);
+});
+
+app.post('/getallvote', function (req,res) {
+   giornataCNT.getAllVote(res,req.body);
+});
+
+app.post('/getvotebyteam',function (req,res) {
+   giornataCNT.getVoteByTeam(res,req.body);
+});
+
+app.post('/sumpoints',function (req,res) {
+    giornataCNT.sumPoints(res,req.body);
+});
+
+app.post('/leaderboard',function (req,res) {
+    giornataCNT.leaderboard(res,req.body);
+});
+
 
 let server = app.listen(8081, "127.0.0.1", function () {
     let address = server.address().address;

@@ -81,6 +81,9 @@
                     <li>
                         <a href="info_room.html">Leaderboard</a>
                     </li>
+                    <li>
+                        <a href="lastday.html">Last Day</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
@@ -134,7 +137,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="exampleInputLastName">Maximum number of invites</label>
-                                            <input class="form-control" id="exampleInputLastName" type="number" min="2"
+                                            <input class="form-control" id="exampleInputLastName" type="number" min="1"
                                                    max="12">
                                         </div>
 
@@ -256,7 +259,7 @@ Page level plugin JavaScript
     $("#confirm").on('click', function () {
 
         let roomObj = {roomName: $("#exampleInputName").val(), participants: invited};
-        console.log(roomObj);
+
         $.ajax({
             url: '/createRoom',
             type: "POST",
@@ -264,8 +267,9 @@ Page level plugin JavaScript
             data: JSON.stringify(roomObj),
             contentType: "application/json",
             success: function (data) {
+                console.log(data);
                 localStorage.setItem('rooms',data.roomName);
-                alert("Room creata");
+                $(window.location).attr('href', '/home.html');
             },
             error: function (data) {
                 alert("Room exists");
