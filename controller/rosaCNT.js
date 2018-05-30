@@ -17,6 +17,7 @@ let d = new Date();
 
 function createTeam(res, obj) {
     let teamObj = [];
+
     let tl = obj.team.length;
     for (let i = 0; i < tl; i++) {
         let objI = {player: obj.team[i].Player, PLteam: obj.team[i].Team, roule: obj.team[i].Roule};
@@ -29,14 +30,17 @@ function createTeam(res, obj) {
     };
 
     let rosaO = new rosa(obj2);
+
     rosaO.save(err => {
         if (err) {
             console.log(d.toLocaleString() + '\tcreateTeam() Duplicate team');
             res.status(409).json({message: 'Duplicate team', error: '409'}).end();
         } else {
-            user.findOneAndUpdate({team: obj.name}, {budget: obj.budget});
+            user.findOneAndUpdate({team: obj.name}, {budget: obj.budget},function (err,doc) {
+                console.log("credito aggiornato");
+            });
             console.log(d.toLocaleString() + '\tcreateTeam()');
-            res.status(200).send('200').end();
+            res.status(200).json({budget:obj.budget}).end();
         }
     });
 }
@@ -77,6 +81,7 @@ function formazione(res, obj) {
                 }
                 j = 0;
             }
+            //todo aggiornare il credito
             rosa.update({name: obj.name}, {team: doc.team}, function (err, doc) {
                 if(err){console.log(d.toLocaleString() + '\tformazione() UPDATE ERROR');}
                 console.log(d.toLocaleString() + '\tformazione()');

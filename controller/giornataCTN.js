@@ -41,6 +41,7 @@ function getVoteByTeam(res, obj) {
 }
 
 async function sumPoints(res, obj) {
+    console.log(obj);
     let userS= await user.find({rooms:obj.room},{nick:1,team:1,_id:0});
     let len=userS.length;
     let toReturn=[];
@@ -82,7 +83,7 @@ async function sumPoints(res, obj) {
 
         if (rosaS.giornata.length === 0) {
             rosaS.giornata.push({'day': obj.day, 'point': point});
-            let rosaU= await rosa.update({name: obj.team}, {points: points, giornata: rosaS.giornata});
+            let rosaU= await rosa.update({name: userS[i].team}, {points: points, giornata: rosaS.giornata});
            // rosa.update({name: obj.team}, {points: points, giornata: rosaS.giornata}, function (err, doc) {
                 console.log(0);
                 toReturn.push({nick:userS[i].nick,points: points.toFixed(2), point: point.toFixed(2)});
@@ -102,7 +103,7 @@ async function sumPoints(res, obj) {
 
             } else {
                 console.log("else");
-                toReturn.push({nick:userS[i].nick,points: points.toFixed(2), point: point.toFixed(2)});
+                toReturn.push({nick:userS[i].nick,points: last.toFixed(2), point: point.toFixed(2)});
                 //console.log(toReturn);
             }
         }

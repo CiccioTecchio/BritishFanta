@@ -190,7 +190,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <a class="btn btn-primary" id="logout"href="index.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -204,6 +204,9 @@
 
 
 <script>
+    $("#logout").on("click", function () {
+        localStorage.clear();
+    });
 let obj;
     $.ajax({
         url: '/getLastDay',
@@ -265,6 +268,7 @@ let obj;
     $.ajax({
         url: '/sumpoints',
         type: 'POST',
+        async:false,
         data: JSON.stringify({team: localStorage.getItem("team"), day:obj.day, room:localStorage.getItem("rooms")}),
         contentType: "application/json",
         dataType: 'json',
@@ -286,6 +290,7 @@ let t= $('#leaderboard').DataTable({
     ajax: {
         url: "/leaderboard",
         type: 'POST',
+        async: false,
         data: {
             "room": localStorage.getItem("rooms"),
         },

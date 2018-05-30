@@ -12,7 +12,7 @@ let rosaSchema = new Schema({
         type: Number,
         default: 0
     },
-    giornata: [{day: {type: Number, default: null}, point: {type: Number, default: 0}}]
+    giornata: [{day: {type: Number, default: 1}, point: {type: Number, default: 0}}]
 });
 
 let rosa = mongoose.model('rosa', rosaSchema);

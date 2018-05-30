@@ -259,7 +259,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="index.html">Logout</a>
+                    <a class="btn btn-primary" id="logout" href="index.html">Logout</a>
                 </div>
             </div>
         </div>
@@ -278,7 +278,9 @@
 
 <script>
 
-    //todo getBudgetByNick
+    $("#logout").on("click", function () {
+        localStorage.clear();
+    });
 
     $("#budget").html(localStorage.getItem("budget"));
     let budget = localStorage.getItem("budget");
@@ -401,16 +403,18 @@
     $('#confirm').click(function () {
         let rosa = new Array();
         let len = playerList.rows('.selected').data().length;
-        if (budget >= 0) {
+        let bdj=$("#budget").val();
+        console.log(bdj);
+        if (bdj >= 0) {
             if (gk == 3 && def == 8 && mid == 8 && fw == 6) {
-                localStorage.setItem("budget", budget);
+                localStorage.setItem("budget", bdj);
                 for (let i = 0; i < len; i++) {
                     rosa.push(playerList.rows('.selected').data()[i]);
                 }
 
                 let obj = {
                     name: localStorage.getItem("team"),
-                    budget: budget.toFixed(2),
+                    budget: parseFloat($("#budget").html()),
                     team: rosa
                 };
                 $.ajax({
@@ -419,7 +423,8 @@
                     data: JSON.stringify(obj),
                     contentType: "application/json",
                     dataType: 'json',
-                    success: function () {
+                    success: function (data) {
+                        localStorage.setItem("budget",data.budget);
                         alert("Data send");
                     },
                     error: function () {

@@ -47,7 +47,6 @@ function signIn(req, res, nick, pswd) {
                 /*room.findOne({roomName: doc.rooms}, function (err, data) {
                     console.log(data);
                 });*/
-                //todo ottenere anche punti e posizione
                 console.log(d.toLocaleString() + '\tsignIn()');
                 res.status(200).json(doc).end();
             }
